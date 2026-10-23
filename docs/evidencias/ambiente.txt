@@ -1,5 +1,5 @@
 Version = Eclipse GlassFish 7.1.1 (commit: 8e05816bdc1d25b10d4274e0beea417d4ad412cc)
 Command version executed successfully.
 Command ping-connection-pool executed successfully.
-CadastroEE  <ear, ejb, web>  
+CadastroEE  <ear, ejb, web>
 Command list-applications executed successfully.
