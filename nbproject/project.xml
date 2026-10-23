@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
+            <name>CadastroEE</name>
+            <properties/>
+            <folders>
+                <source-folder><label>CadastroEE-ejb</label><type>java</type><location>CadastroEE-ejb/src/java</location><encoding>UTF-8</encoding></source-folder>
+                <source-folder><label>CadastroEE-war</label><type>java</type><location>CadastroEE-war/src/java</location><encoding>UTF-8</encoding></source-folder>
+                <source-folder><label>Testes</label><type>java</type><location>test</location><encoding>UTF-8</encoding></source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build"><target>dist</target></action>
+                <action name="clean"><target>clean</target></action>
+                <action name="rebuild"><target>clean</target><target>dist</target></action>
+                <action name="test"><target>test</target></action>
+                <action name="run"><target>deploy</target></action>
+            </ide-actions>
+            <view>
+                <items>
+                    <source-folder style="packages"><label>CadastroEE-ejb</label><location>CadastroEE-ejb/src/java</location></source-folder>
+                    <source-folder style="packages"><label>CadastroEE-war</label><location>CadastroEE-war/src/java</location></source-folder>
+                    <source-folder style="tree"><label>Páginas JSP</label><location>CadastroEE-war/web</location></source-folder>
+                    <source-folder style="packages"><label>Testes</label><location>test</location></source-folder>
+                    <source-file><location>build.xml</location></source-file>
+                </items>
+                <context-menu><ide-action name="build"/><ide-action name="rebuild"/><ide-action name="clean"/><ide-action name="test"/><ide-action name="run"/></context-menu>
+            </view>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/4">
+            <compilation-unit>
+                <package-root>CadastroEE-ejb/src/java</package-root>
+                <classpath mode="compile">lib/jakarta.jakartaee-api-10.0.0.jar</classpath>
+                <built-to>build/ejb</built-to><source-level>17</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>CadastroEE-war/src/java</package-root>
+                <classpath mode="compile">lib/jakarta.jakartaee-api-10.0.0.jar:build/ejb</classpath>
+                <built-to>build/war</built-to><source-level>17</source-level>
+            </compilation-unit>
+        </java-data>
+    </configuration>
+</project>

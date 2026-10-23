@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CadastroEE" default="dist" basedir=".">
+    <property environment="env"/>
+    <property name="api.jar" location="lib/jakarta.jakartaee-api-10.0.0.jar"/>
+    <property name="asadmin" location="${env.GLASSFISH_HOME}/bin/asadmin"/>
+
+    <target name="dependencies">
+        <mkdir dir="lib"/>
+        <get src="https://repo.maven.apache.org/maven2/jakarta/platform/jakarta.jakartaee-api/10.0.0/jakarta.jakartaee-api-10.0.0.jar"
+             dest="${api.jar}" skipexisting="true"/>
+    </target>
+
+    <target name="compile" depends="dependencies">
+        <mkdir dir="build/ejb"/>
+        <mkdir dir="build/war"/>
+        <javac srcdir="CadastroEE-ejb/src/java" destdir="build/ejb" release="17"
+               encoding="UTF-8" includeantruntime="false" classpath="${api.jar}"/>
+        <javac srcdir="CadastroEE-war/src/java" destdir="build/war" release="17"
+               encoding="UTF-8" includeantruntime="false" classpath="${api.jar};build/ejb"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <mkdir dir="build/test"/>
+        <javac srcdir="test" destdir="build/test" release="17" encoding="UTF-8"
+               includeantruntime="false" classpath="${api.jar};build/ejb"/>
+        <java classname="cadastroee.model.ProdutoTest" fork="true" failonerror="true"
+              classpath="${api.jar};build/ejb;build/test"/>
+    </target>
+
+    <target name="dist" depends="test">
+        <mkdir dir="dist"/>
+        <jar destfile="dist/CadastroEE-ejb.jar" basedir="build/ejb">
+            <metainf dir="CadastroEE-ejb/src/conf"/>
+        </jar>
+        <war destfile="dist/CadastroEE-war.war" webxml="CadastroEE-war/web/WEB-INF/web.xml">
+            <fileset dir="CadastroEE-war/web" excludes="WEB-INF/web.xml"/>
+            <classes dir="build/war"/>
+        </war>
+        <ear destfile="dist/CadastroEE.ear" appxml="CadastroEE/src/conf/application.xml">
+            <fileset dir="dist" includes="CadastroEE-ejb.jar,CadastroEE-war.war"/>
+        </ear>
+    </target>
+
+    <target name="deploy" depends="dist" description="Implanta no GlassFish iniciado; configure -Dasadmin=caminho completo.">
+        <exec executable="${asadmin}" failonerror="true">
+            <arg value="deploy"/><arg value="--force=true"/><arg file="dist/CadastroEE.ear"/>
+        </exec>
+    </target>
+
+    <target name="clean">
+        <delete dir="build"/><delete dir="dist"/>
+    </target>
+</project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" version="6.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <display-name>Cadastro de produtos</display-name>
+    <servlet>
+        <servlet-name>ServletProduto</servlet-name>
+        <servlet-class>cadastroee.servlets.ServletProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletProdutoFC</servlet-name>
+        <servlet-class>cadastroee.servlets.ServletProdutoFC</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletProduto</servlet-name>
+        <url-pattern>/ServletProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletProdutoFC</servlet-name>
+        <url-pattern>/ServletProdutoFC</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list><welcome-file>ServletProdutoFC</welcome-file></welcome-file-list>
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config><http-only>true</http-only></cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/Erro.jsp</location>
+    </error-page>
+</web-app>

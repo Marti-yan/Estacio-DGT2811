@@ -1,0 +1,31 @@
+OK - Listagem com JSP e EJB
+OK - Bootstrap na listagem
+OK - Acentuação UTF-8 na listagem
+OK - Formulário de inclusão
+OK - Acentuação UTF-8 no formulário
+OK - Inclusão persistida
+OK - Nome escapado contra XSS
+OK - Reenvio do mesmo formulário bloqueado
+OK - Formulário recupera a entidade
+OK - Alteração persistida e preço com vírgula
+OK - Nova consulta confirma os valores gravados
+OK - GET de exclusão apenas pede confirmação
+OK - Validação: nome=
+OK - Validação: nome=xxxxxxxxxxxxxxxxxxxx
+OK - Validação: quantidade=-1
+OK - Validação: quantidade=1.5
+OK - Validação: quantidade=2147483648
+OK - Validação: precoVenda=-1
+OK - Validação: precoVenda=NaN
+OK - Validação: precoVenda=Infinity
+OK - POST sem token rejeitado
+OK - Inclusão por GET rejeitada
+OK - Alteração por GET rejeitada
+OK - Ação desconhecida rejeitada
+OK - ID inválido rejeitado
+OK - Produto inexistente retorna 404
+OK - Servlet de teste funciona
+OK - Exclusão persistida
+OK - Consulta confirma a exclusão
+
+29 verificações HTTP passaram.
